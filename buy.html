@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fantom Fomo Divs</title>
+	<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+	<link rel="stylesheet" href="/css/alertify.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/neon-glow/dist/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Audiowide|Iceland|Monoton|Pacifico|Press+Start+2P|Vampiro+One' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script
+		src="https://code.jquery.com/jquery-3.1.1.min.js"
+		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous">
+	</script>
+
+	<style>
+
+	.rowtest {
+  width: 100vmax;
+  height: auto;
+
+	padding: 40px, 20px, 20px, 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.bg-grey {
+  background-color: grey;
+}
+
+	.buysell {
+  column-width: 300px;
+	float: center;
+  width: 50%;
+  padding: 100px;
+  height: 300px;
+}
+
+	div.w {
+  word-wrap: break-word;
+}
+
+	body {
+		background-color: #220025;
+		background-image: url('img/rocket2_bg.png');
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-position: center;
+	}
+
+
+		.app.testframe .buy,
+		.app.testframe .sell,
+		.app.testframe .transfer {
+			text-align: center;
+		}
+
+		.app.testframe .buy input,
+		.app.testframe .sell input,
+		.app.testframe .transfer input {
+			text-align: center;
+			font-size:25px;
+		}
+
+		.no-padding {
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+		}
+
+		.approx {
+			font-size: 22px;
+		    font-style: italic;
+		    color: #949494;
+		}
+
+		.app.interface {
+
+		}
+
+		.app.interface.loaded {
+			display: initial;
+		}
+
+		.app.stats.bubble span {
+			display: block;
+		}
+		.app.stats.bubble span.count {
+			margin-top: 12px;
+			font-size: 32px;
+			font-style: italic;
+		}
+		.app.stats.bubble span.identifier {
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.app.stats.bubble span.identifier .soft {
+			font-weight: 300;
+			font-size: 15px;
+		}
+		.app.stats.bubble span.converted {
+			margin-top: 10px;
+		}
+		.app.stats.textual {
+			text-align: center;
+		}
+		.app.stats.textual span {
+			display: block;
+			font-size: 18px;
+			margin-bottom: 15px;
+		}
+		.app.stats.textual span img {
+			background: #eadfdf;
+			padding: 5px;
+			margin: 0 auto;
+			width: 60px;
+		}
+		.actions .button {
+			margin-bottom: 15px;
+			width: 100%;
+		}
+
+		.validator.hidden{
+			display: none !important;
+		}
+
+		.validator img {
+			width: 115px;
+		}
+
+		.validator h2 {
+			font-weight: bold;
+			font-style: italic;
+		}
+
+		.validator p {
+			padding-bottom: 15px;
+		}
+		.validator .link span {
+			font-size: 22px;
+			display: block;
+			padding-bottom: 13px;
+		}
+		.validator .link a {
+			font-size: 25px;
+		}
+		.buy .button,
+		.sell .button {
+			width: 100%;
+			background-color: #eadfdf
+		}
+
+
+		.buy .six.wide.column,
+		.sell .six.wide.column {
+			text-align: center !important;
+		}
+		.buy .six.wide.column .buyPrice,
+		.buy .six.wide.column .sellPrice,
+		.sell .six.wide.column .buyPrice,
+		.sell .six.wide.column .sellPrice {
+			width: 300px;
+			display: block;
+			font-size: 20px;
+			padding-bottom: 5px;
+		}
+
+
+		.transfer p {
+			text-align: center;
+		}
+		.transfer button {
+			width: 100%;
+		}
+		.transfer input {
+			height: 50px;
+			font-size: 20px !important;
+		}
+
+		.blocks-grid {
+  max-width:75.0rem;
+  margin:0 auto;
+  .item {
+    cursor: pointer;
+    margin-bottom:1rem;
+    position:relative;
+    height:34.0rem;
+    padding-top:2.5rem;
+  }
+}
+
+white {
+	color: #abaaaa;
+}
+
+			 .imgbox {
+					 display: grid;
+					 height: 100%;
+			 }
+			 .center-fit {
+					 max-width: 100%;
+					 max-height: 100vh;
+					 margin: 20px 0px 20px 0px;
+			 }
+
+			 /*loading*/
+			 @font-face {
+	font-family: 'icomoon';
+
+	src:url('https://s3.amazonaws.com/icomoon.io/4/Loading/icomoon.eot?#iefix-9haulc') format('embedded-opentype'),
+
+		url('https://s3.amazonaws.com/icomoon.io/4/Loading/icomoon.ttf?-9haulc') format('truetype'),
+		url('https://s3.amazonaws.com/icomoon.io/4/Loading/icomoon.svg?-9haulc#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-spinner-2:before {
+	content: "\e001";
+}
+
+@keyframes anim-rotate {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.spinner {
+	display: inline-block;
+	font-size:10em;
+	height: 1em;
+	line-height: 1;
+	margin: 1.5em 0em 0em 0em;
+	animation: anim-rotate 1.5s infinite linear;
+	color: #55baec;
+	text-shadow: 0 0 1em rgba(255,255,255, .3);
+}
+.spinner--steps {
+	animation: anim-rotate 1s infinite steps(8);
+}
+.spinner--steps2 {
+	animation: anim-rotate 1s infinite steps(12);
+}
+
+.talign-center {
+	text-align: center;
+}
+
+.h1s {
+	color: white;
+	filter: drop-shadow(0 0 2px #2b002b) drop-shadow(0 0 10px #387c9d) drop-shadow(0 0 5px #55baec);
+	-webkit-filter: drop-shadow(0 0 2px #2b002b) drop-shadow(0 0 10px #387c9d) drop-shadow(0 0 5px #55baec);
+}
+
+.h2s {
+	color: white;
+	font-size: medium;
+	filter: drop-shadow(0 0 2px #2b002b) drop-shadow(0 0 10px #387c9d) drop-shadow(0 0 5px #55baec);
+	-webkit-filter: drop-shadow(0 0 2px #2b002b) drop-shadow(0 0 10px #387c9d) drop-shadow(0 0 5px #55baec);
+}
+
+.h2s_black {
+	color: black;
+	font-size: medium;
+	filter: drop-shadow(0 0 2px #2b002b) drop-shadow(0 0 10px #387c9d) drop-shadow(0 0 5px #55baec);
+	-webkit-filter: drop-shadow(0 0 2px #2b002b) drop-shadow(0 0 10px #387c9d) drop-shadow(0 0 5px #55baec);
+}
+
+/*loading end*/
+
+
+	</style>
+</head>
+<body>
+
+
+	<ui class="ui centered grid container intro" style="margin-top:30px;">
+
+			<div class="imgbox">
+				<img="img/ffd_logo.png"</img>
+				<img class="center-fit" src="img/ffd_logo.png">
+			</div>
+
+
+
+				<div class="row">
+					<div class="column" style="text-align: center;">
+			<white>
+				<div class="sub header">The First Truly Interactive dApp on Opera</div>
+			  <div class="sub header">How to Get Connected to the Fantom Opera Network and Play - <a href="https://fantomdivs.hostedwiki.co/" target="_blank"><span class="h2s">Instructions Here</span></a></div>
+			</white>
+			</div>
+		</div>
+
+	</ui>
+
+
+
+
+
+					<!-- start of holding-->
+
+				<div class="ui divider"></div>
+
+
+								<div style="text-align: center; margin:20px;">
+
+										<h2 class="ui header">
+											<span class="h1s">
+												YOUR HOLDINGS
+											</span>
+										</h2>
+								</div>
+
+
+									<div class="container-contact300">
+									<div class="column" style="text-align: center;">
+										<div style="margin:0px 50px 0px">
+									<div id="myTokens">
+
+
+										<white><span class="identifier">Tokens <span class="soft">(FFD)</span></span></white>
+										<p><c><span class="count">-</span></c></p>
+										<i><b><white><span class="converted"><i>(-USDT)</i></span></white></b></i>
+									</div>
+									</div>
+
+							</div>
+
+
+
+
+									<div class="column" style="text-align: center;">
+										<div style="margin:0px 50px 0px">
+									<div id="myDividends">
+
+
+									<white><span class="identifier">Dividends <span class="soft">(FTM)</span></span></white>
+										<p><c><span class="count">-</span></c></p>
+										<i><b><white><span class="converted">(-USDT)</span></white></b></i>
+									</div>
+								</div>
+							</div>
+				</div>
+
+		<!--	</div>-->
+
+
+					<!-- end of holding-->
+
+
+					<div class="row">
+						<div class="column validator hidden" style="text-align: center;">
+							<div class="ui divider"></div>
+							<h2><span class="h1s">Your Validator Node is Running!</span></h2>
+							<div class="ui divider"></div>
+							<h3><white>Share Your Referral to Receive <strong>33% of The Fee</strong> From Each Buy-in That Uses It!</white></h3>
+							<div class="link">
+								<div class="w">
+									<br>
+								<h3><white>Your Validator Referral Link Is</white></h3>
+								<a href="/?validator=0x">https://fantomdivs.me/buy.html?validator=0x123456</a>
+							</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="ui divider"></div>
+					<div class="container-contact100">
+
+						<div class="ui centered grid">
+							<div class"buysell">
+					<div class="column">
+						<!--<div class="container-contact100">-->
+							<div class="wrap-contact100">
+						<div class="column buy">
+							<h2 class="ui aligned icon header">
+
+							  Buy
+								<img src="img/rocket_buy.png" alt="">
+							</h2>
+							<a>Unit = FTM</a>
+							<br>
+										<span class="buyPrice">1234/token</span>
+										<form class="ui form">
+											<div class="field">
+												<input type="text" name="first-name" placeholder="0">
+											</div>
+										</form>
+
+
+
+									<div class="column" style="text-align: center;">
+										<span class="approx">Amount of FTM to Spend..</span>
+									</div>
+
+										<button class="ui right labeled icon button">
+											<i class="right arrow icon"></i>
+											Buy
+										</button>
+						</div>
+					</div>
+				<!--</div>  <div class="container-contact100">-->
+			</div>
+		</div>
+
+					<div class"buysell">
+						<div class="column">
+							<!--<div class="container-contact100">-->
+								<div class="wrap-contact100">
+						<div class="column sell">
+							<h2 class="ui aligned icon header">
+							  <!--<img src="img/sell.png" alt="">-->
+							  Sell
+								<img src="img/rocket_sell.png" alt="">
+							</h2>
+							<a>Unit = FFD</a>
+							<br>
+										<span class="sellPrice">1234/token</span>
+										<form class="ui form">
+											<div class="field">
+												<input type="text" name="first-name" placeholder="25">
+											</div>
+										</form>
+										<span class="approx">Amount of FFD to Sell..</span>
+										<button class="ui right labeled icon button">
+											<i class="right arrow icon"></i>
+											Sell
+										</button>
+							</div>
+						</div>
+				<!--</div>  <div class="container-contact100">-->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+					<div class="container-contact300">
+						<div style="align-content: auto;">
+						<div style="margin:2px 2px 2px">
+							<button id="reinvest" class="ui medium button">Reinvest Dividends</button>
+						</div>
+						</div>
+						<div style="margin:2px 2px 2px">
+							<button id="withdraw" class="ui medium button">Withdraw Dividends</button>
+						</div>
+						<div style="margin:2px 2px 2px">
+							<a href="https://explorer.fantom.network/address/0x014dD8994D812F134DA7D5bAC6ee8AcBe594F971" target="_blank"><button class="ui medium button">View Contract Address</button></a>
+						</div>
+					</div>
+
+
+			<div class="ui divider"></div>
+		<div class="container-contact300">
+						<div class="column" style="text-align: center;">
+										<span class="eth">
+											<div style="margin:0px 50px 0px">
+												<white>Circulating Supply (FFD)</white>
+													<p><c><b id="tokensInCirculation">-</b></c></p>
+											</div>
+						</div>
+
+
+				<div class="column" style="text-align: center;">
+							<div style="margin:0px 50px 0px">
+								<white><span class="identifier">In Contract (FTM)</span></white>
+									<p><c><b id="ethInContract">-</b></c></p>
+								</span>
+							</div>
+				</div>
+			</div>
+
+					<div class="row">
+
+						<div class="column transfer">
+							<div class="ui divider"></div>
+							<div class="container-contact200">
+								<div class="wrap-contact200">
+
+							<h2 class="ui aligned icon header">
+
+							  TRANSFER
+							</h2>
+						<div style="text-align: center;">
+							<span>Unit = FFD: Be aware that sending FFD tokens immediately withdraws your dividends so they're not lost!</span>
+						</div>
+							<div class="ui divider"></div>
+							<div class="ui centered grid">
+								<div class="row">
+										<form class="ui form">
+											<div class="field">
+												<input type="text" size="40" id="transferAddress" placeholder="Address..">
+											</div>
+										</form>
+
+								</div>
+								<div class="row">
+										<form class="ui form">
+											<div class="field">
+												<input type="text" size="40" id="transferTokenCount" placeholder="Tokens..">
+											</div>
+										</form>
+								</div>
+								<div class="row no-padding">
+									<div class="column" style="text-align: center;">
+										<span class="approx">Type in a valid address and token amount..</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="six wide column">
+										<button class="ui right labeled icon button">
+											<i class="right arrow icon"></i>
+											Transfer
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<br>
+			<!--	</div>-->
+
+
+				<div class="ui active inverted dimmer" id="loadingSpinner">
+					<div class="spinner icon-spinner-2"></div>
+				     <div id="loadingText">Connecting To Metamask... <a href="https://fantomdivs.hostedwiki.co/" target="_blank"><span class="h2s_black">Instructions Here</span></a><br>
+					 <noscript>You need to enable JavaScript to run this app.</noscript></div>
+				</div>
+
+	<script src="/lib/ls.js"></script>
+	<script src="/lib/alertify.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.5.1/bluebird.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js"></script>
+	<script src="/lib/web3.min.js"></script>
+  	<script src="/lib/buy.js"></script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62842445-7"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'UA-62842445-7');
+</script>
+
+</body>
+</html>

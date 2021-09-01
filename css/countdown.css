@@ -1,0 +1,39 @@
+@import "//fonts.googleapis.com/css?family=Bangers";
+
+.wrap {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  height: 50vh;
+}
+
+.time-to {
+  text-align: center;
+  font-family: Bangers;
+  color: #55baec;
+  font-size: 35px;
+  letter-spacing: 2px;
+}
+
+.time-to span {
+  margin: 50px 10px 50px;
+  display: block;
+  color: white;
+  font-size: 9vw;
+  opacity: 0.90;
+  filter: drop-shadow(0 0 2px #2b002b) drop-shadow(0 0 10px #387c9d) drop-shadow(0 0 5px #55baec);
+  -webkit-filter: drop-shadow(0 0 2px #2b002b) drop-shadow(0 0 10px #387c9d) drop-shadow(0 0 5px #55baec);
+}
+
+.imgbox {
+    display: grid;
+    height: 100%;
+}
+.center-fit {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: 20px 0px 20px 0px;
+}
